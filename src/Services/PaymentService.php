@@ -1021,6 +1021,7 @@ class PaymentService
         $cashpaymentComments  = PHP_EOL . $this->paymentHelper->getTranslatedText('cashpayment_expire_date') . $transactionData['cp_due_date'];
         $cashpaymentComments .= PHP_EOL . $this->paymentHelper->getTranslatedText('cashpayment_stores_near_you');
         // We loop in each of them to print those store details
+        if(!empty($transactionData['store_details'])) {
         for($storePos = 1; $storePos <= count( $transactionData['store_details']); $storePos++) {
             $cashpaymentComments .= PHP_EOL .  $transactionData['store_details'][$storePos]['store_name'];
             $cashpaymentComments .= PHP_EOL . utf8_encode( $transactionData['store_details'][$storePos]['street']);
@@ -1029,6 +1030,7 @@ class PaymentService
             $cashpaymentComments .= PHP_EOL .  $transactionData['store_details'][$storePos]['country_code'];
             $cashpaymentComments .= PHP_EOL;
         }
+	}
         return $cashpaymentComments;
     }
 
