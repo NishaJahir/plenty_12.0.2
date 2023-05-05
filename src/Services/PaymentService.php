@@ -459,10 +459,12 @@ class PaymentService
         $paymentKey = $this->paymentHelper->getPaymentKey($paymentRequestData['paymentRequestData']['transaction']['payment_type']);
         $nnDoRedirect = $this->sessionStorage->getPlugin()->getValue('nnDoRedirect');
         $nnOrderCreator = $this->sessionStorage->getPlugin()->getValue('nnOrderCreator');
-        $this->sessionStorage->getPlugin()->setValue('nnOrderCreator', null);
         $nnGooglePayDoRedirect = $this->sessionStorage->getPlugin()->getValue('nnGooglePayDoRedirect');
 	$nnDirectReinitiate   = $this->sessionStorage->getPlugin()->getValue('nnDirectReinitiate', null);
 	$nnRedirectReinitiate = $this->sessionStorage->getPlugin()->getValue('nnRedirectReinitiate', null);
+	$this->sessionStorage->getPlugin()->setValue('nnOrderCreator', null);
+	$this->sessionStorage->getPlugin()->setValue('nnDirectReinitiate', null);
+	$this->sessionStorage->getPlugin()->setValue('nnRedirectReinitiate', null);
         // Send the order no to Novalnet server if order is created initially
        if($this->settingsService->getPaymentSettingsValue('novalnet_order_creation') == true || !empty($nnOrderCreator) || $nnRedirectReinitiate == 1) {
             $paymentRequestData['paymentRequestData']['transaction']['order_no'] = $this->sessionStorage->getPlugin()->getValue('nnOrderNo');
