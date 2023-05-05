@@ -234,6 +234,7 @@ class PaymentController extends Controller
      */
     public function directPaymentProcess()
     {
+        $this->sessionStorage->getPlugin()->setValue('nnDirectReinitiate', '1');
         $this->paymentService->performServerCall();
     }
     
@@ -242,7 +243,8 @@ class PaymentController extends Controller
      *
      */
     public function redirectPayment()
-    {        
+    {    
+        $this->sessionStorage->getPlugin()->setValue('nnRedirectReinitiate', '1');
         $paymentResponseData = $this->paymentService->performServerCall();
         $paymentKey = $this->sessionStorage->getPlugin()->getValue('paymentkey');
         $nnDoRedirect = $this->sessionStorage->getPlugin()->getValue('nnDoRedirect');
