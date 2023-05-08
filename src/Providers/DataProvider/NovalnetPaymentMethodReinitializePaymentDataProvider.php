@@ -52,7 +52,6 @@ class NovalnetPaymentMethodReinitializePaymentDataProvider
         $paymentKey = $paymentHelper->getPaymentKeyByMop($mopId);
         // Check if the order is Novalnet payment method
         if(strpos($paymentKey, 'NOVALNET') !== false) {
-            $this->getLogger(__METHOD__)->error('initilaze details', $paymentKey);
             // Get the Novalnet payment key and MOP Id
             $transactionDetails = $paymentService->getDetailsFromPaymentProperty($order['id']);
             // Build the payment request paramters
