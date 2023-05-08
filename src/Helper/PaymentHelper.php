@@ -122,13 +122,13 @@ class PaymentHelper
     {
         return [
             NovalnetSepaPaymentMethod::PAYMENT_KEY                  => NovalnetSepaPaymentMethod::class,
-            NovalnetCcPaymentMethod::PAYMENT_KEY                    => NovalnetCcPaymentMethod::class,
-            NovalnetApplePayPaymentMethod::PAYMENT_KEY              => NovalnetApplePayPaymentMethod::class,
-            NovalnetGooglePayPaymentMethod::PAYMENT_KEY             => NovalnetGooglePayPaymentMethod::class,
             NovalnetInvoicePaymentMethod::PAYMENT_KEY               => NovalnetInvoicePaymentMethod::class,
             NovalnetPrepaymentPaymentMethod::PAYMENT_KEY            => NovalnetPrepaymentPaymentMethod::class,
             NovalnetGuaranteedInvoicePaymentMethod::PAYMENT_KEY     => NovalnetGuaranteedInvoicePaymentMethod::class,
             NovalnetGuaranteedSepaPaymentMethod::PAYMENT_KEY        => NovalnetGuaranteedSepaPaymentMethod::class,
+            NovalnetCcPaymentMethod::PAYMENT_KEY                    => NovalnetCcPaymentMethod::class,
+            NovalnetApplePayPaymentMethod::PAYMENT_KEY              => NovalnetApplePayPaymentMethod::class,
+            NovalnetGooglePayPaymentMethod::PAYMENT_KEY             => NovalnetGooglePayPaymentMethod::class,
             NovalnetIdealPaymentMethod::PAYMENT_KEY                 => NovalnetIdealPaymentMethod::class,
             NovalnetSofortPaymentMethod::PAYMENT_KEY                => NovalnetSofortPaymentMethod::class,
             NovalnetGiropayPaymentMethod::PAYMENT_KEY               => NovalnetGiropayPaymentMethod::class,
