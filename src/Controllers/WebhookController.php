@@ -159,6 +159,10 @@ class WebhookController extends Controller
         $this->eventTid  = $this->eventData['event']['tid'];
         // Retreiving the shop's order information based on the transaction
         $this->orderDetails = $this->getOrderDetails();
+        if(is_string($this->orderDetails))
+        {
+          return $this->orderDetails;
+        }
         //  Get order language from the order object
         $this->orderLanguage = $this->getOrderLanguage();
         // Handle the individual webhook process
