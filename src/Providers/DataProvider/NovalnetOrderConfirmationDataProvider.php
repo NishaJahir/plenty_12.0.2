@@ -47,7 +47,6 @@ class NovalnetOrderConfirmationDataProvider
             // Loads the payments for an order
             $payments = $paymentRepositoryContract->getPaymentsByOrderId($order['id']);
             foreach($payments as $payment) {
-                $this->getLogger(__METHOD__)->error('confirmation details', $payment->method['paymentKey']);
                     // Check it is Novalnet Payment method order
                     if($paymentHelper->getPaymentKeyByMop($payment->mopId)) {
                         // Load the order property and get the required details
