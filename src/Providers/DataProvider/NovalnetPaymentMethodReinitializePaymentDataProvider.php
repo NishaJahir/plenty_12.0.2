@@ -15,8 +15,6 @@ use Plenty\Modules\Frontend\Session\Storage\Contracts\FrontendSessionStorageFact
 use Novalnet\Helper\PaymentHelper;
 use Novalnet\Services\SettingsService;
 use Plenty\Modules\Helper\Services\WebstoreHelper;
-use Plenty\Plugin\Log\Loggable;
-
 /**
  * Class NovalnetPaymentMethodReinitializePaymentDataProvider
  *
@@ -24,7 +22,6 @@ use Plenty\Plugin\Log\Loggable;
  */
 class NovalnetPaymentMethodReinitializePaymentDataProvider
 {
-    use Loggable;
     /**
      * Display the reinitiate payment button
      *
