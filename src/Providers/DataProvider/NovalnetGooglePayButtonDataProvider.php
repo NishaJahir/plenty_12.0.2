@@ -51,7 +51,6 @@ class NovalnetGooglePayButtonDataProvider
         $settingsService    = pluginApp(SettingsService::class);
 
         if($settingsService->getPaymentSettingsValue('payment_active', 'novalnet_googlepay') == true) {
-            $this->getLogger(__METHOD__)->error('gpay details', $basket->basketAmount);
             if(!empty($basket->basketAmount)) {
                 $orderAmount = 0;
                 /** @var \Plenty\Modules\Frontend\Services\VatService $vatService */
