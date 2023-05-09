@@ -460,8 +460,8 @@ class PaymentService
         $nnDoRedirect = $this->sessionStorage->getPlugin()->getValue('nnDoRedirect');
         $nnOrderCreator = $this->sessionStorage->getPlugin()->getValue('nnOrderCreator');
         $nnGooglePayDoRedirect = $this->sessionStorage->getPlugin()->getValue('nnGooglePayDoRedirect');
-	$nnDirectReinitiate   = $this->sessionStorage->getPlugin()->getValue('nnDirectReinitiate', null);
-	$nnRedirectReinitiate = $this->sessionStorage->getPlugin()->getValue('nnRedirectReinitiate', null);
+	$nnDirectReinitiate   = $this->sessionStorage->getPlugin()->getValue('nnDirectReinitiate');
+	$nnRedirectReinitiate = $this->sessionStorage->getPlugin()->getValue('nnRedirectReinitiate');
 	$this->sessionStorage->getPlugin()->setValue('nnOrderCreator', null);
 	$this->sessionStorage->getPlugin()->setValue('nnDirectReinitiate', null);
 	$this->sessionStorage->getPlugin()->setValue('nnRedirectReinitiate', null);
