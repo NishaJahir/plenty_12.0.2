@@ -18,6 +18,7 @@ use Novalnet\Services\SettingsService;
 use Plenty\Modules\Frontend\Session\Storage\Contracts\FrontendSessionStorageFactoryContract;
 use Plenty\Modules\Basket\Contracts\BasketRepositoryContract;
 use Plenty\Plugin\Templates\Twig;
+use Plenty\Plugin\Log\Loggable;
 /**
  * Class PaymentController
  *
@@ -25,6 +26,7 @@ use Plenty\Plugin\Templates\Twig;
  */
 class PaymentController extends Controller
 { 
+    use Loggable;
     /**
      * @var Request
      */
@@ -243,6 +245,7 @@ class PaymentController extends Controller
     {    
         $this->sessionStorage->getPlugin()->setValue('nnRedirectReinitiate', '1');
         $paymentResponseData = $this->paymentService->performServerCall();
+        $this->getLogger(__METHOD__)->error('redirectResoponse', $paymentResponseData);
         $paymentKey = $this->sessionStorage->getPlugin()->getValue('paymentkey');
         $nnDoRedirect = $this->sessionStorage->getPlugin()->getValue('nnDoRedirect');
         $nnGooglePayDoRedirect = $this->sessionStorage->getPlugin()->getValue('nnGooglePayDoRedirect');
