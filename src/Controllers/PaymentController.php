@@ -105,9 +105,10 @@ class PaymentController extends Controller
      */
     public function paymentResponse()
     {
+  
         // Get the initial payment call response
         $paymentResponseData = $this->request->all();
-        
+        $this->getLogger(__METHOD__)->error('paymentResponse', $paymentResponseData);
         // Checksum validation for redirects
         if(!empty($paymentResponseData['tid'])) {
             if($paymentResponseData['status'] == 'SUCCESS') {
@@ -166,6 +167,7 @@ class PaymentController extends Controller
     {
         // Get the payment form post data
         $paymentRequestPostData = $this->request->all();
+        $this->getLogger(__METHOD__)->error('processPayment', $paymentRequestPostData);
         // Get the order amount
         $orderAmount = !empty($paymentRequestPostData['nn_order_amount']) ? $paymentRequestPostData['nn_order_amount'] : 0;
         // Get the payment request params
