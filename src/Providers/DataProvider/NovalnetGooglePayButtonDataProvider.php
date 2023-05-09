@@ -86,7 +86,7 @@ class NovalnetGooglePayButtonDataProvider
                                         [
                                             'paymentMethodId'       => $paymentMethodDetails[0],
                                             'googlePayData'         => $googlePayData,
-                                            'countryCode'           => $countryRepository->findIsoCode($billingAddress->countryId, 'iso_code_2'),
+                                            'countryCode'           => !empty($countryRepository->findIsoCode($billingAddress->countryId, 'iso_code_2')) ? $countryRepository->findIsoCode($billingAddress->countryId, 'iso_code_2') : 'DE',
                                             'orderAmount'           => $orderAmount,
                                             'orderLang'             => $orderLang,
                                             'orderCurrency'         => $basket->currency,
