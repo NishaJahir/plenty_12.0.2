@@ -510,12 +510,13 @@ class PaymentHelper
     {
         $paymentMethodKey = [
             'DIRECT_DEBIT_SEPA'             => 'NOVALNET_SEPA',
-            'CREDITCARD'                    => 'NOVALNET_CC',
-            'APPLEPAY'                      => 'NOVALNET_APPLEPAY',
             'INVOICE'                       => 'NOVALNET_INVOICE',
             'PREPAYMENT'                    => 'NOVALNET_PREPAYMENT',
             'GUARANTEED_INVOICE'            => 'NOVALNET_GUARANTEED_INVOICE',
             'GUARANTEED_DIRECT_DEBIT_SEPA'  => 'NOVALNET_GUARANTEED_SEPA',
+            'CREDITCARD'                    => 'NOVALNET_CC',
+            'APPLEPAY'                      => 'NOVALNET_APPLEPAY',
+            'GOOGLEPAY'                     => 'NOVALNET_GOOGLEPAY',
             'IDEAL'                         => 'NOVALNET_IDEAL',
             'ONLINE_TRANSFER'               => 'NOVALNET_SOFORT',
             'GIROPAY'                       => 'NOVALNET_GIROPAY',
@@ -531,7 +532,7 @@ class PaymentHelper
             'ALIPAY'                        => 'NOVALNET_ALIPAY',
             'WECHATPAY'                     => 'NOVALNET_WECHAT_PAY',
             'TRUSTLY'                       => 'NOVALNET_TRUSTLY',
-            'GOOGLEPAY'                     => 'NOVALNET_GOOGLEPAY'
+            
         ];
         return $paymentMethodKey[$paymentType];
     }
