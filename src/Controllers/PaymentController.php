@@ -6,7 +6,7 @@
  * @copyright(C) Novalnet
  * @license      https://www.novalnet.de/payment-plugins/kostenlos/lizenz
  */
-
+ 
 namespace Novalnet\Controllers;
 
 use Plenty\Plugin\Controller;
