@@ -204,7 +204,7 @@ class PaymentHelper
                     NovalnetGuaranteedSepaPaymentMethod::PAYMENT_KEY,
                     NovalnetCcPaymentMethod::PAYMENT_KEY,
                     NovalnetApplePayPaymentMethod::PAYMENT_KEY,
-                    NovalnetGooglePayPaymentMethod::PAYMENT_KEY
+                    NovalnetGooglePayPaymentMethod::PAYMENT_KEY,
                     NovalnetIdealPaymentMethod::PAYMENT_KEY,
                     NovalnetSofortPaymentMethod::PAYMENT_KEY,
                     NovalnetGiropayPaymentMethod::PAYMENT_KEY,
