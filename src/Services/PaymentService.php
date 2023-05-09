@@ -7,7 +7,7 @@
  * @license      https://www.novalnet.de/payment-plugins/kostenlos/lizenz
  */
 namespace Novalnet\Services;
-
+ 
 use Novalnet\Services\SettingsService;
 use Novalnet\Helper\PaymentHelper;
 use Novalnet\Constants\NovalnetConstants;
