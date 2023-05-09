@@ -105,7 +105,8 @@ class PaymentController extends Controller
      */
     public function paymentResponse()
     {
-  
+       $nnRedirectReinitiate = $this->sessionStorage->getPlugin()->getValue('nnRedirectReinitiate', 1);
+       $this->sessionStorage->getPlugin()->setValue('nnRedirectReinitiate', null);
         // Get the initial payment call response
         $paymentResponseData = $this->request->all();
         $this->getLogger(__METHOD__)->error('paymentResponse', $paymentResponseData);
