@@ -198,12 +198,13 @@ class PaymentHelper
     {
         return [
                     NovalnetSepaPaymentMethod::PAYMENT_KEY,
-                    NovalnetCcPaymentMethod::PAYMENT_KEY,
-                    NovalnetApplePayPaymentMethod::PAYMENT_KEY,
                     NovalnetInvoicePaymentMethod::PAYMENT_KEY,
                     NovalnetPrepaymentPaymentMethod::PAYMENT_KEY,
                     NovalnetGuaranteedInvoicePaymentMethod::PAYMENT_KEY,
                     NovalnetGuaranteedSepaPaymentMethod::PAYMENT_KEY,
+                    NovalnetCcPaymentMethod::PAYMENT_KEY,
+                    NovalnetApplePayPaymentMethod::PAYMENT_KEY,
+                    NovalnetGooglePayPaymentMethod::PAYMENT_KEY
                     NovalnetIdealPaymentMethod::PAYMENT_KEY,
                     NovalnetSofortPaymentMethod::PAYMENT_KEY,
                     NovalnetGiropayPaymentMethod::PAYMENT_KEY,
@@ -219,7 +220,7 @@ class PaymentHelper
                     NovalnetAlipayPaymentMethod::PAYMENT_KEY,
                     NovalnetWechatPayPaymentMethod::PAYMENT_KEY,
                     NovalnetTrustlyPaymentMethod::PAYMENT_KEY,
-                    NovalnetGooglePayPaymentMethod::PAYMENT_KEY
+               
                 ];
     }
 
