@@ -466,9 +466,8 @@ class PaymentService
 	$this->sessionStorage->getPlugin()->setValue('nnReinitiatePayment', null);
 	$this->getLogger(__METHOD__)->alert('Novalnet::getCustomerAddress', $nnReinitiatePayment);
         // Send the order no to Novalnet server if order is created initially
-       if($this->settingsService->getPaymentSettingsValue('novalnet_order_creation') == true || !empty($nnOrderCreator) || ($nnReinitiatePayment == 1)) {
+       if($this->settingsService->getPaymentSettingsValue('novalnet_order_creation') == true || !empty($nnOrderCreator)) {
             $paymentRequestData['paymentRequestData']['transaction']['order_no'] = $this->sessionStorage->getPlugin()->getValue('nnOrderNo');
-	    $this->sessionStorage->getPlugin()->getValue('nnOrderNo', '');
         }
         $privateKey = $this->settingsService->getPaymentSettingsValue('novalnet_private_key');
         $paymentResponseData = $this->paymentHelper->executeCurl($paymentRequestData['paymentRequestData'], $paymentRequestData['paymentUrl'], $privateKey);
