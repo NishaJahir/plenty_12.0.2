@@ -1,6 +1,7 @@
 {# Set the post data and Load the JS #}
 <input type="hidden" name="nn_paymentmethod_key" id="nn_paymentmethod_key" value="{{nnPaymentMethodKey}}">
 <input type="hidden" name="nn_paymentmethod_id" id="nn_paymentmethod_id" value="{{nnPaymentMethodId}}">
+
 <script type="text/javascript">
     jQuery(document).ready(function() {
     
@@ -42,7 +43,8 @@
         
         {# Call the redirect payment methods #}
         jQuery('#nn_redirect_payment_process').click(function() {
-           $("#redirectPayment").submit();
+	    window.location.href = jQuery('#nn_redirect_url').val();
+            {# $("#redirectPayment").submit(); #}
         });
 
     });
@@ -60,7 +62,4 @@ function iOS() {
 }
 </script>
 
-<form id="redirectPayment" method="post" action="{{redirectUrl}}">
-<input type="hidden"  value="1" name="nnReinitiatePayment" id="nnReinitiatePayment">
-<input type="hidden"  value="{{redirectUrl}}" name="nnRedirectPayment" id="nnRedirectPayment">
-</form>
+
