@@ -31,6 +31,7 @@ class NovalnetPaymentMethodScriptDataProvider
         // Load the all Novalnet payment methods
         $paymentMethodRepository = pluginApp(PaymentMethodRepositoryContract::class);
         $paymentMethods          = $paymentMethodRepository->allForPlugin('plenty_novalnet');
+        $paymentService          = pluginApp(PaymentService::class);
         if(!is_null($paymentMethods)) {
             $paymentMethodIds              = [];
             $nnPaymentMethodKey = $nnPaymentMethodId = '';
@@ -47,7 +48,8 @@ class NovalnetPaymentMethodScriptDataProvider
                                     [
                                         'paymentMethodIds'      => $paymentMethodIds,
                                         'nnPaymentMethodKey'    => $nnPaymentMethodKey,
-                                        'nnPaymentMethodId'     => $nnPaymentMethodId
+                                        'nnPaymentMethodId'     => $nnPaymentMethodId,
+                                        'redirectUrl'           => $paymentService->getRedirectPaymentUrl(),
                                     ]);
         } else {
             return '';
