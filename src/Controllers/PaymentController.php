@@ -142,7 +142,7 @@ class PaymentController extends Controller
             $paymentRequestData = $this->sessionStorage->getPlugin()->getValue('nnPaymentData');
             // Set the payment response in the session for the further processings
             $this->sessionStorage->getPlugin()->setValue('nnPaymentData', array_merge($paymentRequestData, $paymentResponseData));
-            if($this->settingsService->getPaymentSettingsValue('novalnet_order_creation') != true && !isset($paymentResponseData['transaction']['order_no']) && ($this->settingsService->getPaymentSettingsValue('novalnet_order_creation') != true  && empty($nnRedirectReinitiate))) {
+            if($this->settingsService->getPaymentSettingsValue('novalnet_order_creation') != true && !isset($paymentResponseData['transaction']['order_no'])) {
                 // Call the shop executePayment function
                 return $this->response->redirectTo($this->sessionStorage->getLocaleSettings()->language . '/place-order');
             }
@@ -238,7 +238,7 @@ class PaymentController extends Controller
     {
         $PostData = $this->request->all();
         $this->getLogger(__METHOD__)->error('redirectResoponse', $PostData);
-        $this->sessionStorage->getPlugin()->setValue('nnDirectReinitiate', '1');
+        $this->sessionStorage->getPlugin()->setValue('nnReinitiatePayment', '1');
         $this->paymentService->performServerCall();
     }
     
@@ -250,7 +250,7 @@ class PaymentController extends Controller
     {    
         $PostData = $this->request->all();
         $this->getLogger(__METHOD__)->error('redirectResoponse', $PostData);
-        $this->sessionStorage->getPlugin()->setValue('nnRedirectReinitiate', '1');
+        $this->sessionStorage->getPlugin()->setValue('nnReinitiatePayment', '1');
         $paymentResponseData = $this->paymentService->performServerCall();
         $this->getLogger(__METHOD__)->error('redirectResoponse', $paymentResponseData);
         $paymentKey = $this->sessionStorage->getPlugin()->getValue('paymentkey');
