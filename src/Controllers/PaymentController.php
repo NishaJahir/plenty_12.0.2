@@ -246,7 +246,9 @@ class PaymentController extends Controller
     {   
         $postData = $this->request->all();
         $this->getLogger(__METHOD__)->error('POST_DATA', $postData);
+        if($postData['nnReinitiatePayment']) {
         $this->sessionStorage->getPlugin()->setValue('nnReinitiatePayment', '1');
+        }
         $paymentResponseData = $this->paymentService->performServerCall();
         $this->getLogger(__METHOD__)->error('redirectResoponse', $paymentResponseData);
         $paymentKey = $this->sessionStorage->getPlugin()->getValue('paymentkey');
