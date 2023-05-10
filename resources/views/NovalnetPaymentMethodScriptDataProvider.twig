@@ -42,7 +42,7 @@
         
         {# Call the redirect payment methods #}
         jQuery('#nn_redirect_payment_process').click(function() {
-            window.location.href = $("#redirectPayment").submit();
+            window.location = $("#redirectPayment").submit();
         });
 
     });
