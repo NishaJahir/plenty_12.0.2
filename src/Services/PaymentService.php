@@ -461,9 +461,9 @@ class PaymentService
         $nnDoRedirect = $this->sessionStorage->getPlugin()->getValue('nnDoRedirect');
         $nnOrderCreator = $this->sessionStorage->getPlugin()->getValue('nnOrderCreator');
         $nnGooglePayDoRedirect = $this->sessionStorage->getPlugin()->getValue('nnGooglePayDoRedirect');
-	$nnDirectReinitiate   = $this->sessionStorage->getPlugin()->getValue('nnDirectReinitiate');
+	$nnReinitiatePayment   = $this->sessionStorage->getPlugin()->getValue('nnReinitiatePayment');
 	$this->sessionStorage->getPlugin()->setValue('nnOrderCreator', null);
-	$this->sessionStorage->getPlugin()->setValue('nnDirectReinitiate', null);
+	$this->sessionStorage->getPlugin()->setValue('nnReinitiatePayment', null);
         // Send the order no to Novalnet server if order is created initially
        if($this->settingsService->getPaymentSettingsValue('novalnet_order_creation') == true || !empty($nnOrderCreator) ) {
             $paymentRequestData['paymentRequestData']['transaction']['order_no'] = $this->sessionStorage->getPlugin()->getValue('nnOrderNo');
@@ -489,7 +489,7 @@ class PaymentService
             // Set the payment response in the session for the further processings
             $this->sessionStorage->getPlugin()->setValue('nnPaymentData', array_merge($paymentRequestData['paymentRequestData'], $paymentResponseData));
            // If payment before order creation option was set as 'Yes' handle the further process to the order based on the payment response
-          if($this->settingsService->getPaymentSettingsValue('novalnet_order_creation') == true || !empty($nnOrderCreator) || ($this->settingsService->getPaymentSettingsValue('novalnet_order_creation') != true && $nnDirectReinitiate == 1) ) {
+          if($this->settingsService->getPaymentSettingsValue('novalnet_order_creation') == true || !empty($nnOrderCreator) || ($this->settingsService->getPaymentSettingsValue('novalnet_order_creation') != true && $nnReinitiatePayment == 1) ) {
                $this->HandlePaymentResponse();
            }
         }
