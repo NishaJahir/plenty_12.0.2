@@ -580,11 +580,14 @@ class PaymentService
 	$this->sessionStorage->getPlugin()->setValue('mop', null);
 	$this->getLogger(__METHOD__)->error('MOP_ID', $nnPaymentData['mop'] );
         $nnPaymentData['payment_method'] = strtolower($this->paymentHelper->getPaymentKeyByMop($nnPaymentData['mop']));
+	$this->getLogger(__METHOD__)->error('1stOutEmptyfun', $nnPaymentData);    
         // If Order No is not received from the payment response assign the from the session
         if(empty($nnPaymentData['transaction']['order_no'])) {
             $nnPaymentData['transaction']['order_no'] = $this->sessionStorage->getPlugin()->getValue('nnOrderNo');
+	    $this->getLogger(__METHOD__)->error('InEmptyfun', $nnPaymentData);
             $this->sessionStorage->getPlugin()->setValue('nnOrderNo', null);
         }
+	$this->getLogger(__METHOD__)->error('2ndOutEmptyfun', $nnPaymentData);    
         // Set the cashpayment token to session
         if($nnPaymentData['payment_method'] == 'novalnet_cashpayment' && !empty($nnPaymentData['transaction']['checkout_token']) && $nnPaymentData['transaction']['status'] == 'PENDING') {
             $this->sessionStorage->getPlugin()->setValue('novalnetCheckoutToken', $nnPaymentData['transaction']['checkout_token']);
