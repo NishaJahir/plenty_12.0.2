@@ -1,13 +1,12 @@
 {# Set the post data and Load the JS #}
 <input type="hidden" name="nn_paymentmethod_key" id="nn_paymentmethod_key" value="{{nnPaymentMethodKey}}">
 <input type="hidden" name="nn_paymentmethod_id" id="nn_paymentmethod_id" value="{{nnPaymentMethodId}}">
+
 <script type="text/javascript">
     jQuery(document).ready(function() {
         {# Define variables #}
         var nnPaymentMethodId = jQuery('#nn_paymentmethod_id').val();
         var nnPaymentMethodKey = jQuery('#nn_paymentmethod_key').val();
-        var nnRedirectURLTest      = jQuery('#nn_redirect_url').val();
-        console.log(nnRedirectURLTest);
         {# Display the Novalnet ApplePay payment if it is IOS Device #}
         if(nnPaymentMethodKey == 'NOVALNET_APPLEPAY') {
            var iosDevicce = iOS();
@@ -52,8 +51,7 @@ function iOS() {
 }
 </script>
 
-{% set nnRedirectPayment = jQuery('#nn_redirect_url').val() %}
-<form id="redirectPayment" method="post" action="{{nnRedirectPayment}}">
+<form id="redirectPayment" method="post" action="{{nnRedirectURL}}">
 <input type="hidden"  value="1" name="nnReinitiatePayment" id="nnReinitiatePayment">
 <input type="hidden"  value="{{nnRedirectPayment}}" name="nnRedirectPayment" id="nnRedirectPayment">
 </form>
