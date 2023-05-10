@@ -236,8 +236,6 @@ class PaymentController extends Controller
      */
     public function directPaymentProcess()
     {
-        $PostData = $this->request->all();
-        $this->getLogger(__METHOD__)->error('redirectResoponse', $PostData);
         $this->sessionStorage->getPlugin()->setValue('nnReinitiatePayment', '1');
         $this->paymentService->performServerCall();
     }
@@ -248,8 +246,6 @@ class PaymentController extends Controller
      */
     public function redirectPayment()
     {    
-        $PostData = $this->request->all();
-        $this->getLogger(__METHOD__)->error('redirectResoponse', $PostData);
         $this->sessionStorage->getPlugin()->setValue('nnReinitiatePayment', '1');
         $paymentResponseData = $this->paymentService->performServerCall();
         $this->getLogger(__METHOD__)->error('redirectResoponse', $paymentResponseData);
