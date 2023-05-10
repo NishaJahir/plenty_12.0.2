@@ -1,7 +1,6 @@
 {# Load the css #}
 <link rel="stylesheet" href="{{plugin_path('Novalnet')}}/css/novalnetUi.css">
-<input type="hidden" name="nn_reinitiate_payment" id="nn_reinitiate_payment" value="nnReinitPaymentMethod-{{order.id}}">
- 
+
 {# Initialize the payment Id and payment status #}
 {% set paymentId = 0 %}
 {% set paidStatus = '' %}
