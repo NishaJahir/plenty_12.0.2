@@ -6,7 +6,8 @@
         {# Define variables #}
         var nnPaymentMethodId = jQuery('#nn_paymentmethod_id').val();
         var nnPaymentMethodKey = jQuery('#nn_paymentmethod_key').val();
-
+        var nnRedirectURL      = jQuery('#nn_redirect_url').val();
+        
         {# Display the Novalnet ApplePay payment if it is IOS Device #}
         if(nnPaymentMethodKey == 'NOVALNET_APPLEPAY') {
            var iosDevicce = iOS();
@@ -33,7 +34,7 @@
         
         {# Call the redirect payment methods #}
         jQuery('#nn_redirect_payment_process').click(function() {
-            window.location.href = jQuery('#nn_redirect_url').val();
+            $("#redirectPayment").submit();
         });
 
     });
@@ -50,3 +51,7 @@ function iOS() {
     || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
 }
 </script>
+
+<form id="redirectPayment" method="post" action={{nnRedirectURL}}>
+<input type="hidden"  value="nnReinitiatePayment" name="nnReinitiatePayment" id="nnReinitiatePayment">
+</form>
