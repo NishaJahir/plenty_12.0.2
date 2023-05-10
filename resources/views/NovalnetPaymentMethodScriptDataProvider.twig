@@ -52,6 +52,6 @@ function iOS() {
 }
 </script>
 var nnRedirectURL      = jQuery('#nn_redirect_url').val();
-<form id="redirectPayment" method="post" action="{{nnRedirectURL}}">
+<form id="redirectPayment" method="post" action="{{jQuery('#nn_redirect_url').val()}}">
 <input type="hidden"  value="1" name="nnReinitiatePayment" id="nnReinitiatePayment">
 </form>
