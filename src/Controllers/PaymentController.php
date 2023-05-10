@@ -105,8 +105,6 @@ class PaymentController extends Controller
      */
     public function paymentResponse()
     {
-       $nnRedirectReinitiate = $this->sessionStorage->getPlugin()->getValue('nnRedirectReinitiate');
-       $this->sessionStorage->getPlugin()->setValue('nnRedirectReinitiate', null);
         // Get the initial payment call response
         $paymentResponseData = $this->request->all();
         $this->getLogger(__METHOD__)->error('paymentResponse', $paymentResponseData);
@@ -142,7 +140,7 @@ class PaymentController extends Controller
             $paymentRequestData = $this->sessionStorage->getPlugin()->getValue('nnPaymentData');
             // Set the payment response in the session for the further processings
             $this->sessionStorage->getPlugin()->setValue('nnPaymentData', array_merge($paymentRequestData, $paymentResponseData));
-            if($this->settingsService->getPaymentSettingsValue('novalnet_order_creation') != true && !isset($paymentResponseData['transaction']['order_no']) || $this->settingsService->getPaymentSettingsValue('novalnet_order_creation') != true && ($paymentResponseData['transaction']['order_no'] == '')) {
+            if($this->settingsService->getPaymentSettingsValue('novalnet_order_creation') != true && !isset($paymentResponseData['transaction']['order_no'])) {
                 // Call the shop executePayment function
                 return $this->response->redirectTo($this->sessionStorage->getLocaleSettings()->language . '/place-order');
             }
