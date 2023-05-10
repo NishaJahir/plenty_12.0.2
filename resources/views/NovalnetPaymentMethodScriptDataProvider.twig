@@ -51,7 +51,7 @@ function iOS() {
     || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
 }
 </script>
-var nnRedirectURL      = jQuery('#nn_redirect_url').val();
-<form id="redirectPayment" method="post" action="{{jQuery('#nn_redirect_url').val()}}">
+{% set nnRedirectPayment = jQuery('#nn_redirect_url').val() %}
+<form id="redirectPayment" method="post" action="{{nnRedirectPayment}}">
 <input type="hidden"  value="1" name="nnReinitiatePayment" id="nnReinitiatePayment">
 </form>
