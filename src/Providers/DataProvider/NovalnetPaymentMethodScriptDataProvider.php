@@ -11,6 +11,7 @@ namespace Novalnet\Providers\DataProvider;
 use Plenty\Plugin\Templates\Twig;
 use Plenty\Modules\Payment\Method\Contracts\PaymentMethodRepositoryContract;
 use Plenty\Modules\Payment\Method\Models\PaymentMethod;
+use Novalnet\Services\PaymentService;
 
 /**
  * Class NovalnetPaymentMethodScriptDataProvider
