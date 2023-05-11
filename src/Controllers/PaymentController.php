@@ -107,6 +107,7 @@ class PaymentController extends Controller
     {
         // Get the initial payment call response
         $paymentResponseData = $this->request->all();
+        $paymentRequestData = $this->sessionStorage->getPlugin()->getValue('nnPaymentData');
         $this->getLogger(__METHOD__)->error('paymentResponse', $paymentResponseData);
         // Checksum validation for redirects
         if(!empty($paymentResponseData['tid'])) {
@@ -150,6 +151,7 @@ class PaymentController extends Controller
 
         } else {
             $this->paymentService->pushNotification($paymentResponseData['status_text'], 'error', 100);
+             $this->paymentService->pushNotification($paymentResponseData['status_text'], 'error', 100);
             if($this->settingsService->getPaymentSettingsValue('novalnet_order_creation') != true) {
                   return $this->response->redirectTo('checkout');
             } else {
