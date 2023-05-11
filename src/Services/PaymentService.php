@@ -464,7 +464,6 @@ class PaymentService
 	$nnReinitiatePayment   = $this->sessionStorage->getPlugin()->getValue('nnReinitiatePayment');
 	$this->sessionStorage->getPlugin()->setValue('nnOrderCreator', null);
 	$this->sessionStorage->getPlugin()->setValue('nnReinitiatePayment', null);
-	$this->getLogger(__METHOD__)->alert('Novalnet::getCustomerAddress', $nnReinitiatePayment);
         // Send the order no to Novalnet server if order is created initially
        if($this->settingsService->getPaymentSettingsValue('novalnet_order_creation') == true || !empty($nnOrderCreator) || ($nnReinitiatePayment == 1)) {
             $paymentRequestData['paymentRequestData']['transaction']['order_no'] = $this->sessionStorage->getPlugin()->getValue('nnOrderNo');
@@ -578,14 +577,10 @@ class PaymentService
         $this->sessionStorage->getPlugin()->setValue('nnDoRedirect', null);
         $this->sessionStorage->getPlugin()->setValue('nnGooglePayDoRedirect', null);
         $nnPaymentData['mop']            = $this->sessionStorage->getPlugin()->getValue('mop');
-	$this->sessionStorage->getPlugin()->setValue('mop', null);
-	$this->getLogger(__METHOD__)->error('MOP_ID', $nnPaymentData['mop'] );
-        $nnPaymentData['payment_method'] = strtolower($this->paymentHelper->getPaymentKeyByMop($nnPaymentData['mop']));
-	$this->getLogger(__METHOD__)->error('1stOutEmptyfun', $nnPaymentData);    
+        $nnPaymentData['payment_method'] = strtolower($this->paymentHelper->getPaymentKeyByMop($nnPaymentData['mop'])); 
         // If Order No is not received from the payment response assign the from the session
         if(empty($nnPaymentData['transaction']['order_no'])) {
             $nnPaymentData['transaction']['order_no'] = $this->sessionStorage->getPlugin()->getValue('nnOrderNo');
-	    $this->getLogger(__METHOD__)->error('InEmptyfun', $nnPaymentData);
             $this->sessionStorage->getPlugin()->setValue('nnOrderNo', null);
         }
 	$this->getLogger(__METHOD__)->error('2ndOutEmptyfun', $nnPaymentData);    
