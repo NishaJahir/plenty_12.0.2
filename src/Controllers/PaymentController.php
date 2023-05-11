@@ -108,7 +108,6 @@ class PaymentController extends Controller
         // Get the initial payment call response
         $paymentResponseData = $this->request->all();
         $paymentRequestData = $this->sessionStorage->getPlugin()->getValue('nnPaymentData');
-        $this->getLogger(__METHOD__)->error('paymentResponse', $paymentResponseData);
         // Checksum validation for redirects
         if(!empty($paymentResponseData['tid'])) {
             if($paymentResponseData['status'] == 'SUCCESS') {
@@ -168,7 +167,6 @@ class PaymentController extends Controller
     {
         // Get the payment form post data
         $paymentRequestPostData = $this->request->all();
-        $this->getLogger(__METHOD__)->error('processPayment', $paymentRequestPostData);
         // Get the order amount
         $orderAmount = !empty($paymentRequestPostData['nn_order_amount']) ? $paymentRequestPostData['nn_order_amount'] : 0;
         // Get the payment request params
@@ -247,12 +245,10 @@ class PaymentController extends Controller
     public function redirectPayment()
     {   
         $postData = $this->request->all();
-        $this->getLogger(__METHOD__)->error('POST_DATA', $postData);
         if($postData['nnReinitiatePayment']) {
         $this->sessionStorage->getPlugin()->setValue('nnReinitiatePayment', '1');
         }
         $paymentResponseData = $this->paymentService->performServerCall();
-        $this->getLogger(__METHOD__)->error('redirectResoponse', $paymentResponseData);
         $paymentKey = $this->sessionStorage->getPlugin()->getValue('paymentkey');
         $nnDoRedirect = $this->sessionStorage->getPlugin()->getValue('nnDoRedirect');
         $nnGooglePayDoRedirect = $this->sessionStorage->getPlugin()->getValue('nnGooglePayDoRedirect');
