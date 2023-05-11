@@ -13,11 +13,11 @@ use Novalnet\Services\PaymentService;
 use Novalnet\Services\SettingsService;
 use Plenty\Plugin\Templates\Twig;
 use Plenty\Modules\Basket\Models\Basket;
-use Plenty\Modules\Basket\Models\BasketItem;
 use Plenty\Modules\Basket\Contracts\BasketRepositoryContract;
 use Plenty\Modules\Frontend\Session\Storage\Contracts\FrontendSessionStorageFactoryContract;
 use Plenty\Modules\Order\Shipping\Countries\Contracts\CountryRepositoryContract;
 use Plenty\Modules\Helper\Services\WebstoreHelper;
+
 /**
  * Class NovalnetGooglePayButtonDataProvider
  *
