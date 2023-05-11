@@ -583,7 +583,6 @@ class PaymentService
             $nnPaymentData['transaction']['order_no'] = $this->sessionStorage->getPlugin()->getValue('nnOrderNo');
             $this->sessionStorage->getPlugin()->setValue('nnOrderNo', null);
         }
-	$this->getLogger(__METHOD__)->error('2ndOutEmptyfun', $nnPaymentData);    
         // Set the cashpayment token to session
         if($nnPaymentData['payment_method'] == 'novalnet_cashpayment' && !empty($nnPaymentData['transaction']['checkout_token']) && $nnPaymentData['transaction']['status'] == 'PENDING') {
             $this->sessionStorage->getPlugin()->setValue('novalnetCheckoutToken', $nnPaymentData['transaction']['checkout_token']);
