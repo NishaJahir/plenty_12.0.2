@@ -150,7 +150,6 @@ class PaymentController extends Controller
 
         } else {
             $this->paymentService->pushNotification($paymentResponseData['status_text'], 'error', 100);
-             $this->paymentService->pushNotification($paymentResponseData['status_text'], 'error', 100);
             if($this->settingsService->getPaymentSettingsValue('novalnet_order_creation') != true) {
                   return $this->response->redirectTo('checkout');
             } else {
