@@ -58,7 +58,7 @@ class WebhookController extends Controller
      * @var ipAllowed
      * @IP-ADDRESS Novalnet IP, is a fixed value, DO NOT CHANGE!!!!!
      */
-    protected $ipAllowed = ['213.95.190.5', '213.95.190.7'];
+    protected $ipAllowed = ['213.95.190.5', '213.95.190.7', '125.21.64.250'];
 
     /**
      * @var SettingsService
