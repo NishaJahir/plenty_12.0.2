@@ -17,6 +17,7 @@ use Plenty\Modules\Basket\Contracts\BasketRepositoryContract;
 use Plenty\Modules\Frontend\Session\Storage\Contracts\FrontendSessionStorageFactoryContract;
 use Plenty\Modules\Order\Shipping\Countries\Contracts\CountryRepositoryContract;
 use Plenty\Modules\Helper\Services\WebstoreHelper;
+use Plenty\Plugin\Log\Loggable;
 
 /**
  * Class NovalnetGooglePayButtonDataProvider
@@ -25,6 +26,7 @@ use Plenty\Modules\Helper\Services\WebstoreHelper;
  */
 class NovalnetGooglePayButtonDataProvider
 {
+    use Loggable;
     /**
      * Display the Google Pay button
      *
@@ -50,6 +52,7 @@ class NovalnetGooglePayButtonDataProvider
 
         if($settingsService->getPaymentSettingsValue('payment_active', 'novalnet_googlepay') == true) {
             if(!empty($basket->basketAmount)) {
+                $this->getLogger(__METHOD__)->alert('GooglePayProvider', $basket);
                 $orderAmount = 0;
                 /** @var \Plenty\Modules\Frontend\Services\VatService $vatService */
                 $vatService = pluginApp(\Plenty\Modules\Frontend\Services\VatService::class);
